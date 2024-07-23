@@ -1,0 +1,39 @@
+game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("hotbar")["1"]:WaitForChild("HotbarHealthbarContainer").HealthbarProgressWrapper["1"].BackgroundColor3 = Color3.fromRGB(75, 0, 130)  
+
+
+
+
+local PlayerGui = game:GetService("Players").LocalPlayer.PlayerGui
+local function SetCorner(Parent, Size)
+    local Corner = Instance.new("UICorner")
+    Corner.CornerRadius = UDim.new(0, Size)
+    Corner.Parent = Parent
+end
+local Color2 = Color3.fromRGB(138, 43, 226)
+for _, v in ipairs(PlayerGui:GetDescendants()) do
+    if v.Name == "hotbar" then
+        for _, v1 in ipairs(v:GetDescendants()) do
+            if v1.Name == "1" then
+                for _, v2 in ipairs(v1:GetDescendants()) do
+                    if v2.Name:lower() == "itemshotbar" then
+                        for _, v3 in ipairs(v2:GetDescendants()) do
+                            if v3:IsA("ImageButton") then
+                                SetCorner(v3, 9)
+                                v3.BackgroundColor3 = Color2
+                            end
+                            if v3:IsA("Frame") then
+                                v3.BackgroundTransparency = 1
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end                                                                                                                  local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
